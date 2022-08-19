@@ -41,6 +41,7 @@
     "lint": "eslint --ext .ts ./lib"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.24.3",
     "@typescript-eslint/eslint-plugin": "^5.33.1",
     "@typescript-eslint/parser": "^5.33.1",
     "eslint": "^8.22.0",

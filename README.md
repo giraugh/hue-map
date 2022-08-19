@@ -64,6 +64,8 @@ Build the library to `dist` using `yarn build`.
 
 Issue contributions and PRs are greatly welcomed and appreciated!
 
+This library uses [changesets](https://github.com/changesets/changesets), if the changes you've made would constitute a version bump, run `yarn changeset` and follow the prompts to document the changes you've made. Changesets are consumed on releases, and used to generate a changelog and bump version number.
+
 ## License
 
 `hue-map` is licensed under MIT
