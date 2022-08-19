@@ -1,0 +1,49 @@
+{
+  "name": "hue-map",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "Interpolate gradients based on common palettes",
+  "keywords": [
+    "viridis",
+    "color",
+    "hue",
+    "interpolate",
+    "hex",
+    "rgb",
+    "inferno",
+    "magma",
+    "plasma",
+    "matplotlib",
+    "seaborn",
+    "gradient",
+    "generate",
+    "scale",
+    "plot",
+    "graph"
+  ],
+  "license": "MIT",
+  "repository": "github:giraugh/hue-map",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/hue-map.umd.cjs",
+  "module": "./dist/hue-map.js",
+  "exports": {
+    ".": {
+      "import": "./dist/hue-map.js",
+      "require": "./dist/hue-map.umd.cjs"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.33.1",
+    "@typescript-eslint/parser": "^5.33.1",
+    "eslint": "^8.22.0",
+    "typescript": "^4.6.4",
+    "vite": "^3.0.7"
+  }
+}

@@ -1,2 +1,3 @@
-# hue-map
-🎨 A friend who helps you interpolate hues :)
+# 🎨 Hue Map
+
+Interpolate gradients based on common palettes
