@@ -18,31 +18,49 @@
         grid-template-columns: 1fr auto;
         gap: .4em 1em;
         align-items: center;
+        margin-block: 1.5em;
       }
       main div {
         height: 2em;
+      }
+      main label {
+        font-family: monospace;
       }
     </style>
   </head>
   <body>
     <h1>Hue Map Palettes</h1>
+    <label>
+      Steps:
+      <input type="range" min="1" value="50">
+      <output></output>
+    </label>
     <main></main>
+    <footer><a href="https://github.com/giraugh/hue-map">Visit the GitHub</a></footer>
 
     <script type="module">
       import createPalette, { maps } from 'hue-map'
 
       const main = document.querySelector('main')
+      const stepsInput = document.querySelector('input')
+      const stepsOutput = document.querySelector('output')
 
-      const shades = 50
-      Object.keys(maps).forEach(map => {
-        const palette = createPalette({ map, shades })
-        const swatch = document.createElement('div')
-        const gradient = `linear-gradient(to right, ${palette.map((h, i) => `${h} ${(i/shades)*100}%, ${h} ${((i+1)/shades)*100}%`).join(', ')})`
-        swatch.style.background = gradient
-        const label = document.createElement('label')
-        label.append(document.createTextNode(map))
-        main.append(swatch, label)
-      })
+      const generatePreviews = () => {
+        main.innerHTML = ''
+        const steps = Number(stepsInput.value)
+        stepsOutput.innerHTML = steps
+        Object.keys(maps).forEach(map => {
+          const swatch = document.createElement('div')
+          const label = document.createElement('label')
+          const palette = createPalette({ map, steps })
+          swatch.style.background = `linear-gradient(to right, ${palette.map((h, i) => `${h} ${(i/steps)*100}%, ${h} ${((i+1)/steps)*100}%`).join(', ')})`
+          label.append(document.createTextNode(map))
+          main.append(swatch, label)
+        })
+      }
+
+      stepsInput.addEventListener('input', generatePreviews)
+      generatePreviews()
     </script>
   </body>
 </html>
