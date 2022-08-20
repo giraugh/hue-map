@@ -18,7 +18,7 @@ type CreatePaletteOptions = {
  * @returns {Palette} The generated palette.
  */
 export const createPalette = ({ map = 'viridis', steps = 10, format = 'cssHex' }: CreatePaletteOptions = {}): Palette => {
-  // Get map using key
+  // If passed a map name, index from built-in color maps
   const colorMap: ColorMap = typeof map === 'string' ? maps[map] : map
 
   // Map colour points from 0..1 to steps array
