@@ -8,6 +8,7 @@ on:
       - 'lib/**'
       - 'index.html'
       - '.github/workflows/deploy_demo.yml'
+      - 'vite.config.js'
 
 jobs:
   deploy:

@@ -2,7 +2,9 @@ name: Lint
 
 on:
   pull_request:
-    paths: ['lib/**']
+    paths:
+      - 'lib/**'
+      - '.eslintrc.js'
 
 jobs:
   lint:
