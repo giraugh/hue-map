@@ -21,4 +21,5 @@ test('createPalette', () => {
   expect(createPalette({ map: 'jet', steps: 5 })).toStrictEqual(['#000083FF','#003CAAFF','#05FFFFFF','#FFFF00FF','#FA0000FF'])
   expect(createPalette({ map: 'alpha', steps: 5 })).toStrictEqual(['#FFFFFF00','#FFFFFF33','#FFFFFF66','#FFFFFF99','#FFFFFFCC'])
   expect(createPalette({ map: 'plasma', steps: 5, format: 'number' })).toStrictEqual([0x0D0887FF,0x7D03A8FF,0xA82296FF,0xE56B5DFF,0xFDC328FF])
+  expect(createPalette({ steps: 100 }).length).toBe(100)
 })
