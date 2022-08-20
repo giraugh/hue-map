@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hue Map Palettes</title>
+    <meta name="description" content="Interpolate gradients based on common palettes.">
+    <meta name="keywords" content="viridis, color, hue, interpolate, hex, rgb, inferno, magma, plasma, matplotlib, seaborn, gradient, generate, scale, plot, graph">
 
     <style>
       :root {
@@ -20,8 +22,12 @@
         align-items: center;
         margin-block: 1.5em;
       }
-      main div {
+      main > div {
         height: 2em;
+        display: flex;
+      }
+      main > div div {
+        flex: 1;
       }
       main label {
         font-family: monospace;
@@ -36,7 +42,7 @@
       <output></output>
     </label>
     <main></main>
-    <footer><a href="https://github.com/giraugh/hue-map">Visit the GitHub</a></footer>
+    <footer><a href="https://github.com/giraugh/hue-map">Visit the GitHub →</a></footer>
 
     <script type="module">
       import createPalette, { maps } from 'hue-map'
@@ -53,7 +59,11 @@
           const swatch = document.createElement('div')
           const label = document.createElement('label')
           const palette = createPalette({ map, steps })
-          swatch.style.background = `linear-gradient(to right, ${palette.map((h, i) => `${h} ${(i/steps)*100}%, ${h} ${((i+1)/steps)*100}%`).join(', ')})`
+          swatch.append(...palette.map(hex => {
+            const color = document.createElement('div')
+            color.style.background = hex
+            return color
+          }))
           label.append(document.createTextNode(map))
           main.append(swatch, label)
         })
