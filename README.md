@@ -38,7 +38,7 @@ The default export is a function that takes an options object.
 | -------- | ---- | ------- | ----------- |
 | `map` | `string` | `'viridis'` | The colour map to use, see below for a list of built-in colour maps. You can also provide a custom colour map. |
 | `steps` | `number` | `10` | The number of colour shades to return. |
-| `format` | `'float' \| 'rgba' \| 'cssHex' \| 'cssRGBA'` | `'cssHex'` | The format of the returned colours. E.g. `float` for `[0.96, 0.61, 0, 1]`, `rgba` for `[247, 158, 0, 1]`, `cssHex` for `'#F79E00FF'`, and `cssRGBA` for `'rgba(247, 158, 0, 1)'`. |
+| `format` | `'float' \| 'rgba' \| 'cssHex' \| 'cssRGBA' \| 'number'` | `'cssHex'` | The format of the returned colours. E.g. `float` for `[0.96, 0.61, 0, 1]`, `rgba` for `[247, 158, 0, 1]`, `cssHex` for `'#F79E00FF'`, `cssRGBA` for `'rgba(247, 158, 0, 1)'`, and `number` for `0xF79E00FF` (or `4154327295` in base 10). |
 
 ### Built-in maps
 
