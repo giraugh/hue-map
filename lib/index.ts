@@ -25,27 +25,37 @@ export const createPalette = ({ map = 'viridis', steps = 10, format = 'cssHex' }
   const colorPoints = colorMap.map(([index, color]) => ({
     index: Math.round(index * (steps-1)),
     color: typeof color === 'number' ? hexColorToRGBA(color) : color,
-  })).filter(({ index }, i, all) => {
-    if (index === steps-1) return all.filter((p, j) => p.index === index && j > i).length < 1
-    return all.findIndex(p => p.index === index) === i
-  })
+  }))
+    // Remove duplicates if the number of points in the map is greater
+    // than the number of steps requested
+    .filter(({ index }, i, all) => {
+      // If end colour, save the last one
+      if (index === steps-1 && steps > 1) return all.filter((p, j) => p.index === index && j > i).length < 1
+
+      // If start colour, save the first one
+      if (index === 0) return all.findIndex(p => p.index === index) === i
+
+      // Else, save the middle-most point
+      const indexPoints = all.filter(p => p.index === index)
+      const middlePoint = indexPoints[Math.floor(indexPoints.length/2)]
+      return i === all.indexOf(middlePoint)
+    })
 
   // Create colors
-  const colorsRGBA = colorPoints
-    .flatMap((_, i) => {
-      // If this is the last point in the array, just return it
-      if (i === colorPoints.length-1) return [colorPoints[i].color]
+  const colorsRGBA = colorPoints.flatMap((_, i) => {
+    // If this is the last point in the array, just return it
+    if (i === colorPoints.length-1) return [colorPoints[i].color]
 
-      // Compare this point to the next point
-      //  - how far is it (in steps)
-      //  - how does the colour change
-      const numSteps: number = colorPoints[i+1].index - colorPoints[i].index
-      const fromColor = colorPoints[i].color
-      const toColor = colorPoints[i+1].color
+    // Compare this point to the next point
+    //  - how far is it (in steps)
+    //  - how does the colour change
+    const numSteps: number = colorPoints[i+1].index - colorPoints[i].index
+    const fromColor = colorPoints[i].color
+    const toColor = colorPoints[i+1].color
 
-      // Generate an amount of steps proportional to the index distance
-      return Array.from({ length: numSteps }, (_, j) => lerpRGBA(fromColor, toColor, j / numSteps))
-    })
+    // Generate an amount of steps proportional to the index distance
+    return Array.from({ length: numSteps }, (_, j) => lerpRGBA(fromColor, toColor, j / numSteps))
+  })
 
   // Convert to desired format
   const colors = colorsRGBA.map(rgba => convertRGBA(rgba, format)) as Palette
