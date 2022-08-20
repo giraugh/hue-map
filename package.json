@@ -38,7 +38,9 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "build:demo": "tsc && vite build -m demo",
-    "lint": "eslint --ext .ts ./lib"
+    "lint": "eslint --ext .ts ./lib",
+    "test": "echo \"to be implemented\"",
+    "ci:release": "yarn build && yarn changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "^2.24.3",
