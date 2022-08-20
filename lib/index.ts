@@ -23,14 +23,19 @@ export const createPalette = ({ map = 'viridis', steps = 10, format = 'cssHex' }
 
   // Map colour points from 0..1 to steps array
   const colorPoints = colorMap.map(([index, color]) => ({
-    index: Math.round(index * steps),
+    index: Math.round(index * (steps-1)),
     color: typeof color === 'number' ? hexColorToRGBA(color) : color,
-  }))
+  })).filter(({ index }, i, all) => {
+    if (index === steps-1) return all.filter((p, j) => p.index === index && j > i).length < 1
+    return all.findIndex(p => p.index === index) === i
+  })
 
   // Create colors
   const colorsRGBA = colorPoints
-    .filter((_, i) => i < colorPoints.length - 1)
     .flatMap((_, i) => {
+      // If this is the last point in the array, just return it
+      if (i === colorPoints.length-1) return [colorPoints[i].color]
+
       // Compare this point to the next point
       //  - how far is it (in steps)
       //  - how does the colour change
