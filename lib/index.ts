@@ -1,8 +1,8 @@
-import maps, { ColorMap } from './maps'
+import maps, { ColorMap, MapKey } from './maps'
 import { hexColorToRGBA, lerpRGBA, RGBA } from './util'
 
 export type Palette = string[] | RGBA[] | number[]
-export type ColorMapInput = keyof typeof maps | ColorMap
+export type ColorMapInput = MapKey | ColorMap
 export type PaletteFormat = 'float' | 'rgba' | 'cssHex' | 'cssRGBA' | 'number'
 type CreatePaletteOptions = {
   map?: ColorMapInput,
