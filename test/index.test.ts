@@ -46,4 +46,18 @@ describe('createPalette', () => {
     expect(createPalette({ map: 'plasma', steps: 5, format: 'number' }))
       .toStrictEqual([0x0D0887FF,0x7D03A8FF,0xA82296FF,0xE56B5DFF,0xFDC328FF])
   })
+
+  it('supports custom color maps', () => {
+    expect(createPalette({
+      map: [[0, 0xFEAC5EFF],[0.5, 0xC779D0FF],[1, 0x4BC0C8FF]],
+      steps: 5,
+      format: 'number',
+    })).toStrictEqual([0xFEAC5EFF,0xEC9B84FF,0xD98AAAFF,0xC779D0FF,0x899DCCFF])
+
+    expect(createPalette({
+      map: [[0, [38, 83, 43, 255]],[0.25, [57, 158, 90, 255]],[0.5, [90, 188, 185, 255]],[0.75, [99, 226, 198, 255]],[1, [110, 249, 245, 255]]],
+      steps: 5,
+      format: 'number',
+    })).toStrictEqual([0x26532BFF,0x399E5AFF,0x4AAD8AFF,0x5ABCB9FF,0x63E2C6FF])
+  })
 })
