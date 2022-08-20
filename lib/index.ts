@@ -13,7 +13,7 @@ type CreatePaletteOptions = {
 /**
  * Generate a palette from a given color map.
  * @param {ColorMapInput} options.map The name of the colormap to use, or a custom map.
- * @param {number} options.steps The number of steps to include in the palette. Must be greater than or equal to number of points in color map.
+ * @param {number} options.steps The number of steps to include in the palette.
  * @param {PaletteFormat} options.format The format of the palette colors.
  * @returns {Palette} The generated palette.
  */
