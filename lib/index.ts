@@ -1,5 +1,5 @@
 import maps from './maps'
-import { hexColourToRGBA, lerpRGBA, RGBA } from './util'
+import { hexColorToRGBA, lerpRGBA, RGBA } from './util'
 
 type Palette = string[] | RGBA[]
 type PaletteFormat = 'float' | 'rgba' | 'cssHex' | 'cssRGBA'
@@ -21,7 +21,7 @@ export const createPalette = ({ map = 'viridis', steps = 10, format = 'cssHex' }
   const colorMap = maps[map]
 
   // Map colour points from 0..1 to steps array
-  const colorPoints = colorMap.map(([index, hexColor]) => ({ index: Math.round(index * steps), color: hexColourToRGBA(hexColor) } ))
+  const colorPoints = colorMap.map(([index, hexColor]) => ({ index: Math.round(index * steps), color: hexColorToRGBA(hexColor) } ))
 
   // Create colors
   const colorsRGBA = colorPoints
