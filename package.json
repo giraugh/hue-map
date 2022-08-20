@@ -39,7 +39,7 @@
     "build": "tsc && vite build",
     "build:demo": "tsc && vite build -m demo",
     "lint": "eslint --ext .ts ./lib",
-    "test": "echo \"to be implemented\"",
+    "test": "vitest",
     "ci:release": "yarn build && yarn changeset publish"
   },
   "devDependencies": {
