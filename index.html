@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hue Map Palettes</title>
+
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+      body {
+        font-family: sans-serif;
+        margin: 1em;
+      }
+      main {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: .4em 1em;
+        align-items: center;
+        margin-block: 1.5em;
+      }
+      main div {
+        height: 2em;
+      }
+      main label {
+        font-family: monospace;
+      }
+    </style>
+    <script type="module" crossorigin src="/hue-map/assets/index.d982af57.js"></script>
+  </head>
+  <body>
+    <h1>Hue Map Palettes</h1>
+    <label>
+      Steps:
+      <input type="range" min="1" value="50">
+      <output></output>
+    </label>
+    <main></main>
+    <footer><a href="https://github.com/giraugh/hue-map">Visit the GitHub</a></footer>
+
+    
+  </body>
+</html>
