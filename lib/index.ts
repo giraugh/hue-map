@@ -1,27 +1,31 @@
-import maps from './maps'
+import maps, { ColorMap, MapKey } from './maps'
 import { hexColorToRGBA, lerpRGBA, RGBA } from './util'
 
-type Palette = string[] | RGBA[]
-type PaletteFormat = 'float' | 'rgba' | 'cssHex' | 'cssRGBA' | 'number'
+export type Palette = string[] | RGBA[] | number[]
+export type ColorMapInput = MapKey | ColorMap
+export type PaletteFormat = 'float' | 'rgba' | 'cssHex' | 'cssRGBA' | 'number'
 type CreatePaletteOptions = {
-  map?: keyof typeof maps,
+  map?: ColorMapInput,
   steps?: number,
   format?: PaletteFormat
 }
 
 /**
  * Generate a palette from a given color map.
- * @param {PaletteFormat} options.map The name of the colormap to use.
+ * @param {ColorMapInput} options.map The name of the colormap to use, or a custom map.
  * @param {number} options.steps The number of steps to include in the palette. Must be greater than or equal to number of points in color map.
  * @param {PaletteFormat} options.format The format of the palette colors.
  * @returns {Palette} The generated palette.
  */
 export const createPalette = ({ map = 'viridis', steps = 10, format = 'cssHex' }: CreatePaletteOptions = {}): Palette => {
-  // Get map using key
-  const colorMap = maps[map]
+  // If passed a map name, index from built-in color maps
+  const colorMap: ColorMap = typeof map === 'string' ? maps[map] : map
 
   // Map colour points from 0..1 to steps array
-  const colorPoints = colorMap.map(([index, hexColor]) => ({ index: Math.round(index * steps), color: hexColorToRGBA(hexColor) } ))
+  const colorPoints = colorMap.map(([index, color]) => ({
+    index: Math.round(index * steps),
+    color: typeof color === 'number' ? hexColorToRGBA(color) : color,
+  }))
 
   // Create colors
   const colorsRGBA = colorPoints

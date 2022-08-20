@@ -1,3 +1,5 @@
+import { RGBA } from './util'
+
 const maps = {
   'jet':              [[0, 0x000083FF], [0.125, 0x003CAAFF], [0.375, 0x05FFFFFF], [0.625, 0xFFFF00FF], [0.875, 0xFA0000FF], [1, 0x800000FF]],
   'hsv':              [[0, 0xFF0000FF], [0.169, 0xFDFF02FF], [0.173, 0xF7FF02FF], [0.337, 0x00FC04FF], [0.341, 0x00FC0AFF], [0.506, 0x01F9FFFF], [0.671, 0x0200FDFF], [0.675, 0x0800FDFF], [0.839, 0xFF00FBFF], [0.843, 0xFF00F5FF], [1, 0xFF0006FF]],
@@ -45,4 +47,6 @@ const maps = {
   'cubehelix':        [[0, 0x000000FF], [0.07, 0x16053BFF], [0.13, 0x3C0469FF], [0.2, 0x6D0187FF], [0.27, 0xA10093FF], [0.33, 0xD2028EFF], [0.4, 0xFB0B7BFF], [0.47, 0xFF1D61FF], [0.53, 0xFF3645FF], [0.6, 0xFF552EFF], [0.67, 0xFF7822FF], [0.73, 0xFF9D25FF], [0.8, 0xF1BF39FF], [0.87, 0xE0DC5DFF], [0.93, 0xDAF18EFF], [1, 0xE3FDC6FF]],
 }
 
-export default maps
+export type ColorMap = [number, number | RGBA][]
+export type MapKey = keyof typeof maps
+export default maps as unknown as Record<string, ColorMap>

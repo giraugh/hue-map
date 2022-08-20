@@ -50,7 +50,31 @@ Visit the [demo page](https://giraugh.github.io/hue-map/) to see a list with exa
 
 ### Custom colour maps
 
-> Coming soon...
+You can also provide a custom colour map to the `map` option, with a type of `[number, number | RGBA][]`. This is an array of tuples, where each tuple has an index of where that colour appears in the gradient (from 0 to 1), and the colour at that point, as a HEX number or an RGBA tuple. Note that all HEX numbers need to include alpha.
+
+```js
+import createPalette from 'hue-map'
+
+// 3 colour points, using HEX values
+const myHexPalette = createPalette({
+  map: [
+    [0, 0xFEAC5EFF],
+    [0.5, 0xC779D0FF],
+    [1, 0x4BC0C8FF],
+  ]
+})
+
+// 5 colour points, using RGBA values
+const myHexPalette = createPalette({
+  map: [
+    [0, [38, 83, 43, 255]],
+    [0.25, [57, 158, 90, 255]],
+    [0.5, [90, 188, 185, 255]],
+    [0.75, [99, 226, 198, 255]],
+    [1, [110, 249, 245, 255]],
+  ]
+})
+```
 
 ## Development
 
