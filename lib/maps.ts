@@ -1,4 +1,8 @@
-const maps = {
+import { RGBA } from './util'
+
+export type ColorMap = [number, number | RGBA][]
+
+const maps: Record<string, ColorMap> = {
   'jet':              [[0, 0x000083FF], [0.125, 0x003CAAFF], [0.375, 0x05FFFFFF], [0.625, 0xFFFF00FF], [0.875, 0xFA0000FF], [1, 0x800000FF]],
   'hsv':              [[0, 0xFF0000FF], [0.169, 0xFDFF02FF], [0.173, 0xF7FF02FF], [0.337, 0x00FC04FF], [0.341, 0x00FC0AFF], [0.506, 0x01F9FFFF], [0.671, 0x0200FDFF], [0.675, 0x0800FDFF], [0.839, 0xFF00FBFF], [0.843, 0xFF00F5FF], [1, 0xFF0006FF]],
   'hot':              [[0, 0x000000FF], [0.3, 0xE60000FF], [0.6, 0xFFD200FF], [1, 0xFFFFFFFF]],
