@@ -7,6 +7,8 @@ Interpolate gradients based on common palettes. **[See a demo](https://giraugh.g
 
 Inspired by D3 colour scales, with maps from [colormap](https://github.com/bpostlethwaite/colormap).
 
+![Some example palettes](https://user-images.githubusercontent.com/8862273/185757207-643934bb-da49-42f6-9956-8185de6bcb19.png)
+
 ## Installation
 
 ```bash
@@ -25,7 +27,7 @@ const myPalette = createPalette({
 })
 
 console.log(myPalette)
-// ['#472C7AFF', '#2C718EFF', '#5CC863FF']
+// ['#440154FF', '#21908DFF', '#FDE725FF']
 ```
 
 ## API

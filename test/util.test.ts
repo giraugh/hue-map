@@ -7,6 +7,8 @@ describe('lerp', () => {
     expect(lerp(0, 1, .5)).toBe(.5)
     expect(lerp(-10, 0, .5)).toBe(-5)
     expect(lerp(0, .5, Math.PI)).toBe(Math.PI/2)
+    expect(lerp(0, 255, 0)).toBe(0)
+    expect(lerp(0, 255, 1)).toBe(255)
   })
 })
 
