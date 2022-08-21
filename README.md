@@ -27,7 +27,7 @@ const myPalette = createPalette({
 })
 
 console.log(myPalette)
-// ['#472C7AFF', '#2C718EFF', '#5CC863FF']
+// ['#440154FF', '#21908DFF', '#FDE725FF']
 ```
 
 ## API
