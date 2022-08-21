@@ -1,6 +1,6 @@
 {
   "name": "hue-map",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "description": "Interpolate gradients based on common palettes",
   "keywords": [
