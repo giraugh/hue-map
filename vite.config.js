@@ -1,9 +1,14 @@
 /* eslint-env node */
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
+import dts from 'vite-plugin-dts'
 
 export default defineConfig(({ mode }) => ({
-  plugins: [],
+  plugins: [
+    dts({
+      insertTypesEntry: true,
+    })
+  ],
   resolve: {
     alias: {
       'hue-map': resolve(__dirname, '/lib/index.ts')
