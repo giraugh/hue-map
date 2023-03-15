@@ -27,6 +27,7 @@
     "dist"
   ],
   "main": "./dist/hue-map.umd.cjs",
+  "types": "./dist/hue-map.d.ts",
   "module": "./dist/hue-map.js",
   "exports": {
     ".": {
