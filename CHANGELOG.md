@@ -1,5 +1,11 @@
 # hue-map
 
+## 0.1.2
+
+### Patch Changes
+
+- a891893: Output library types
+
 ## 0.1.1
 
 ### Patch Changes
