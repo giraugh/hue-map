@@ -15,6 +15,7 @@ class Palette {
     this.colors = colors
   }
 
+  /** Convert this palette into a specified format */
   format(_format: 'cssHex'): string[]
   format(_format: 'cssRGBA'): string[]
   format(_format: 'number'): number[]
@@ -22,6 +23,11 @@ class Palette {
   format(_format: 'rgba'): RGBA[]
   format(format: PaletteFormat) {
     return this.colors.map(rgba => convertRGBA(rgba, format))
+  }
+
+  /** Get the number of colors in this palette */
+  get length() {
+    return this.colors.length
   }
 }
 
@@ -32,7 +38,7 @@ class Palette {
  * @param {PaletteFormat} options.format The format of the palette colors.
  * @returns {Palette} The generated palette.
  */
-export const createPalette = ({ map = 'viridis', steps = 10 }: CreatePaletteOptions): Palette => {
+export const createPalette = ({ map = 'viridis', steps = 10 }: CreatePaletteOptions = {}): Palette => {
   // If passed a map name, index from built-in color maps
   const colorMap: ColorMap = typeof map === 'string' ? maps[map] : map
 
