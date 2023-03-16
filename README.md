@@ -18,21 +18,20 @@ yarn add hue-map
 ## Usage
 
 ```js
-import createPalette from 'hue-map'
+import { createPalette } from 'hue-map'
 
 const myPalette = createPalette({
   map: 'viridis',
   steps: 3,
-  format: 'cssHex',
 })
 
-console.log(myPalette)
-// ['#440154FF', '#21908DFF', '#FDE725FF']
+console.log(myPalette.format('cssHex'))
+// --> ['#440154FF', '#21908DFF', '#FDE725FF']
 ```
 
 ## API
 
-The default export is a function that takes an options object.
+The `createPalette` export is a function that takes an options object.
 
 ### Options
 
@@ -55,7 +54,7 @@ Visit the [demo page](https://giraugh.github.io/hue-map/) to see a list with exa
 You can also provide a custom colour map to the `map` option, with a type of `[number, number | RGBA][]`. This is an array of tuples, where each tuple has an index of where that colour appears in the gradient (from 0 to 1), and the colour at that point, as a HEX number or an RGBA tuple. Note that all HEX numbers need to include alpha.
 
 ```js
-import createPalette from 'hue-map'
+import { createPalette } from 'hue-map'
 
 // 3 colour points, using HEX values
 const myHexPalette = createPalette({
