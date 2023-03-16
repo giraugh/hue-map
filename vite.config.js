@@ -17,7 +17,7 @@ export default defineConfig(({ mode }) => ({
   build: {
     ...mode !== 'demo' && { lib: {
       entry: resolve(__dirname, 'lib/index.ts'),
-      name: 'hue-map',
+      name: 'hueMap',
       fileName: 'hue-map',
     }},
     rollupOptions: {
