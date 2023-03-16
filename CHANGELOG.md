@@ -1,5 +1,11 @@
 # hue-map
 
+## 0.1.3
+
+### Patch Changes
+
+- 5b129bd: Fix malformed module identifier in type declarations
+
 ## 0.1.2
 
 ### Patch Changes
