@@ -18,29 +18,41 @@ yarn add hue-map
 ## Usage
 
 ```js
-import createPalette from 'hue-map'
+import { createPalette } from 'hue-map'
 
 const myPalette = createPalette({
   map: 'viridis',
   steps: 3,
-  format: 'cssHex',
 })
 
-console.log(myPalette)
-// ['#440154FF', '#21908DFF', '#FDE725FF']
+console.log(myPalette.format('cssHex'))
+// --> ['#440154FF', '#21908DFF', '#FDE725FF']
 ```
 
 ## API
 
-The default export is a function that takes an options object.
+`hue-map` exports a `createPalette` function which takes an options object and returns a palette object.
 
-### Options
+### Palette Creation Options 
 
 | Property | Type | Default | Description |
 | -------- | ---- | ------- | ----------- |
 | `map` | `string` | `'viridis'` | The colour map to use, see below for a list of built-in colour maps. You can also provide a custom colour map. |
 | `steps` | `number` | `10` | The number of colour shades to return. |
-| `format` | `'float' \| 'rgba' \| 'cssHex' \| 'cssRGBA' \| 'number'` | `'cssHex'` | The format of the returned colours. E.g. `float` for `[0.96, 0.61, 0, 1]`, `rgba` for `[247, 158, 0, 1]`, `cssHex` for `'#F79E00FF'`, `cssRGBA` for `'rgba(247, 158, 0, 1)'`, and `number` for `0xF79E00FF` (or `4154327295` in base 10). |
+
+
+### Palette Formatting
+
+Call `.format()` on a palette object to get an array of colours. Pass a `format` argument to control the format that the colors are returned as.
+
+| Format   | Returned Type | Example     | Description                                 |
+| -------- | ------------- | ----------- | ------------------------------------------- |
+| `cssHex` | `string`      | `'#F79E00FF'` | A valid css colour in the form of #RRGGBBAA |
+| `cssRGBA` | `string`      | `'rgba(247, 158, 0, 1)'` | A valid css colour in the form of rgba(R, G, B, A) |
+| `number` | `number`      | `0xF79E00FF` | A hex number representing the colour in the form of 0xRRGGBBAA |
+| `float` | `[number, number, number, number]` | `[0.3, 0.2, 0.5, 1.0]`  | A four-tuple of numbers between 0 and 1 representing R, G, B, and A respectively |
+| `rgba` | `[number, number, number, number]` | `[128, 40, 200, 255]` | A four-tuple of numbers between 0 and 255 representing R, G, B, and A respectively |
+
 
 ### Built-in maps
 
@@ -55,7 +67,7 @@ Visit the [demo page](https://giraugh.github.io/hue-map/) to see a list with exa
 You can also provide a custom colour map to the `map` option, with a type of `[number, number | RGBA][]`. This is an array of tuples, where each tuple has an index of where that colour appears in the gradient (from 0 to 1), and the colour at that point, as a HEX number or an RGBA tuple. Note that all HEX numbers need to include alpha.
 
 ```js
-import createPalette from 'hue-map'
+import { createPalette } from 'hue-map'
 
 // 3 colour points, using HEX values
 const myHexPalette = createPalette({

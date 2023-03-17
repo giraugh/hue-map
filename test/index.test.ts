@@ -22,7 +22,7 @@ describe('convertRGBA', () => {
 
 describe('createPalette', () => {
   it('creates the correct palette using default arguments', () => {
-    expect(createPalette())
+    expect(createPalette().format('cssHex'))
       .toStrictEqual(['#440154FF','#472C7AFF','#3B518BFF','#2C718EFF','#27818EFF','#21908DFF','#27AD81FF','#5CC863FF','#AADC32FF','#FDE725FF'])
   })
 
@@ -33,17 +33,17 @@ describe('createPalette', () => {
   })
 
   it('creates the correct palette', () => {
-    expect(createPalette({ map: 'jet', steps: 5 }))
+    expect(createPalette({ map: 'jet', steps: 5 }).format('cssHex'))
       .toStrictEqual(['#000083FF','#003CAAFF','#05FFFFFF','#FFFF00FF','#800000FF'])
   })
 
   it('correctly interpolates alpha', () => {
-    expect(createPalette({ map: 'alpha', steps: 5 }))
+    expect(createPalette({ map: 'alpha', steps: 5 }).format('cssHex'))
       .toStrictEqual(['#FFFFFF00','#FFFFFF40','#FFFFFF80','#FFFFFFBF','#FFFFFFFF'])
   })
 
   it('returns the correct color format', () => {
-    expect(createPalette({ map: 'plasma', steps: 5, format: 'number' }))
+    expect(createPalette({ map: 'plasma', steps: 5 }).format('number'))
       .toStrictEqual([0x0D0887FF,0x7D03A8FF,0xCB4679FF,0xF89441FF,0xF0F921FF])
   })
 
@@ -51,13 +51,11 @@ describe('createPalette', () => {
     expect(createPalette({
       map: [[0, 0xFEAC5EFF],[0.5, 0xC779D0FF],[1, 0x4BC0C8FF]],
       steps: 5,
-      format: 'number',
-    })).toStrictEqual([0xFEAC5EFF,0xE39397FF,0xC779D0FF,0x899DCCFF,0x4BC0C8FF])
+    }).format('number')).toStrictEqual([0xFEAC5EFF,0xE39397FF,0xC779D0FF,0x899DCCFF,0x4BC0C8FF])
 
     expect(createPalette({
       map: [[0, [38, 83, 43, 255]],[0.25, [57, 158, 90, 255]],[0.5, [90, 188, 185, 255]],[0.75, [99, 226, 198, 255]],[1, [110, 249, 245, 255]]],
       steps: 5,
-      format: 'number',
-    })).toStrictEqual([0x26532BFF,0x399E5AFF,0x5ABCB9FF,0x63E2C6FF,0x6EF9F5FF])
+    }).format('number')).toStrictEqual([0x26532BFF,0x399E5AFF,0x5ABCB9FF,0x63E2C6FF,0x6EF9F5FF])
   })
 })

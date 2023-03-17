@@ -1,13 +1,34 @@
 import maps, { ColorMap, MapKey } from './maps'
-import { hexColorToRGBA, lerpRGBA, RGBA } from './util'
+import { hexColorToRGBA, lerpRGBA, RGBA, RGBAFloat } from './util'
 
-export type Palette = string[] | RGBA[] | number[]
 export type ColorMapInput = MapKey | ColorMap
 export type PaletteFormat = 'float' | 'rgba' | 'cssHex' | 'cssRGBA' | 'number'
 type CreatePaletteOptions = {
   map?: ColorMapInput,
   steps?: number,
-  format?: PaletteFormat
+}
+
+class Palette {
+  private readonly colors: RGBA[]
+
+  constructor(colors: RGBA[]) {
+    this.colors = colors
+  }
+
+  /** Convert this palette into a specified format */
+  format(_format: 'cssRGBA'): string[]
+  format(_format: 'number'): number[]
+  format(_format: 'float'): RGBAFloat[]
+  format(_format: 'rgba'): RGBA[]
+  format(_format?: 'cssHex'): string[]
+  format(format: PaletteFormat = 'cssHex') {
+    return this.colors.map(rgba => convertRGBA(rgba, format))
+  }
+
+  /** Get the number of colors in this palette */
+  get length() {
+    return this.colors.length
+  }
 }
 
 /**
@@ -17,7 +38,7 @@ type CreatePaletteOptions = {
  * @param {PaletteFormat} options.format The format of the palette colors.
  * @returns {Palette} The generated palette.
  */
-export const createPalette = ({ map = 'viridis', steps = 10, format = 'cssHex' }: CreatePaletteOptions = {}): Palette => {
+export const createPalette = ({ map = 'viridis', steps = 10 }: CreatePaletteOptions = {}): Palette => {
   // If passed a map name, index from built-in color maps
   const colorMap: ColorMap = typeof map === 'string' ? maps[map] : map
 
@@ -57,9 +78,8 @@ export const createPalette = ({ map = 'viridis', steps = 10, format = 'cssHex' }
     return Array.from({ length: numSteps }, (_, j) => lerpRGBA(fromColor, toColor, j / numSteps))
   })
 
-  // Convert to desired format
-  const colors = colorsRGBA.map(rgba => convertRGBA(rgba, format)) as Palette
-  return colors
+  // Return palette object
+  return new Palette(colorsRGBA)
 }
 
 /**
