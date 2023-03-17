@@ -50,8 +50,8 @@ Call `.format()` on a palette object to get an array of colours. Pass a `format`
 | `cssHex` | `string`      | `'#F79E00FF'` | A valid css colour in the form of #RRGGBBAA |
 | `cssRGBA` | `string`      | `'rgba(247, 158, 0, 1)'` | A valid css colour in the form of rgba(R, G, B, A) |
 | `number` | `number`      | `0xF79E00FF` | A hex number representing the colour in the form of 0xRRGGBBAA |
-| `float` | `[number, number, number, number]` | A four-tuple of numbers between 0 and 1 representing R, G, B, and A respectively |
-| `rgba` | `[number, number, number, number]` | A four-tuple of numbers between 0 and 255 representing R, G, B, and A respectively |
+| `float` | `[number, number, number, number]` | [0.3, 0.2, 0.5, 1.0]  | A four-tuple of numbers between 0 and 1 representing R, G, B, and A respectively |
+| `rgba` | `[number, number, number, number]` |  [128, 40, 200, 255] | A four-tuple of numbers between 0 and 255 representing R, G, B, and A respectively |
 
 
 ### Built-in maps
