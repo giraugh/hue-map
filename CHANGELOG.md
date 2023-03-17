@@ -1,5 +1,11 @@
 # hue-map
 
+## 1.0.0
+
+### Major Changes
+
+- e400285: Refactor api to return a palette object which can be formatted later
+
 ## 0.1.3
 
 ### Patch Changes
