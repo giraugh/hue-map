@@ -45,7 +45,7 @@
     <footer><a href="https://github.com/giraugh/hue-map">Visit the GitHub →</a></footer>
 
     <script type="module">
-      import createPalette, { maps } from 'hue-map'
+      import { createPalette, maps } from 'hue-map'
 
       const main = document.querySelector('main')
       const stepsInput = document.querySelector('input')
@@ -59,7 +59,7 @@
           const swatch = document.createElement('div')
           const label = document.createElement('label')
           const palette = createPalette({ map, steps })
-          swatch.append(...palette.map(hex => {
+          swatch.append(...palette.format().map(hex => {
             const color = document.createElement('div')
             color.style.background = hex
             return color
