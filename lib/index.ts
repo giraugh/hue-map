@@ -1,5 +1,5 @@
 import maps, { ColorMap, MapKey } from './maps'
-import { hexColorToRGBA, lerpRGBA, RGBA } from './util'
+import { hexColorToRGBA, lerpRGBA, RGBA, RGBAFloat } from './util'
 
 export type ColorMapInput = MapKey | ColorMap
 export type PaletteFormat = 'float' | 'rgba' | 'cssHex' | 'cssRGBA' | 'number'
@@ -16,12 +16,12 @@ class Palette {
   }
 
   /** Convert this palette into a specified format */
-  format(_format: 'cssHex'): string[]
   format(_format: 'cssRGBA'): string[]
   format(_format: 'number'): number[]
-  format(_format: 'float'): number[]
+  format(_format: 'float'): RGBAFloat[]
   format(_format: 'rgba'): RGBA[]
-  format(format: PaletteFormat) {
+  format(_format?: 'cssHex'): string[]
+  format(format: PaletteFormat = 'cssHex') {
     return this.colors.map(rgba => convertRGBA(rgba, format))
   }
 

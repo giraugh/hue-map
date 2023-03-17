@@ -1,4 +1,5 @@
 export type RGBA = [number, number, number, number]
+export type RGBAFloat = [number, number, number, number]
 
 export const lerp = (a: number, b: number, t: number): number =>
   a + (b-a) * t
